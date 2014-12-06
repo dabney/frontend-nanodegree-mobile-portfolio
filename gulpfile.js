@@ -1,16 +1,16 @@
 var gulp = require('gulp'),
-   uglify = require('gulp-uglify');
+   uglify = require('gulp-uglify'),
+    concat = require('gulp-concat');
 
-gulp.task('minify', function () {
+gulp.task('uglify', function () {
    gulp.src('views/js/main.js')
       .pipe(uglify())
-      .pipe(gulp.dest('build'))
+      .pipe(gulp.dest('views/js/main.min.js'))
 });
-
+/*
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
-    concat = require('gulp-concat');
 
 gulp.task('js', function () {
    return gulp.src(['js/perfmatters.js', 'views/js/main.js'])
@@ -40,5 +40,6 @@ gulp.task('default', function () {
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('build'));
 });
+*/
