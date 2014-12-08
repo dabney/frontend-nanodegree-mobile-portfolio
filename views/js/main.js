@@ -414,8 +414,6 @@ var pizzaElementGenerator = function(i) {
   ul.innerHTML = makeRandomPizza();
   pizzaDescriptionContainer.appendChild(ul);
   pizzaContainer.appendChild(pizzaDescriptionContainer);
-    //testing
-    pizzaImage.style.display = "none";
   return pizzaContainer;
 }
 
@@ -538,7 +536,9 @@ function updatePositions() {
 
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
 //    items[i].
- //   console.log(items[i].style.left);
+    console.log('basicLeft: ' + items[i].basicLeft);
+
+    console.log('style.left: ' + items[i].style.left);
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -567,8 +567,6 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "77px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    //testing
-    elem.style.display = "none";
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
 
