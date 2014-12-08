@@ -3,12 +3,21 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   minifyCSS = require('gulp-minify-css'),
   imagemin = require('gulp-imagemin');
+  uncss = require('gulp-uncss');
 
 gulp.task('uglifypizza', function () {
    gulp.src('views/js/*.js')
       .pipe(uglify())
       .pipe(gulp.dest('build/views/js'))
 });
+gulp.task('uncsspizzabootstrap', function () {
+   return gulp.src('views/css/bootstrap-grid.css')
+      .pipe(uncss({
+      	html: ['views/pizza.html']
+      }))
+      .pipe(gulp.dest('build/views/css'))
+});
+// ended up inlining, so did not use minified css for pizza
 gulp.task('minifypizza', function () {
    gulp.src('views/css/*.css')
       .pipe(minifyCSS())
@@ -35,7 +44,7 @@ gulp.task('imageminprimary', function () {
 // Push the pizza page images through imagemin.  I already used Photoshop to reduce these images
 //  and to create the pizzeria_as_icon image
 gulp.task('imageminpizza', function () {
-   gulp.src(['views/images/pizzeria_as_icon.jpg', 'views/images/pizza.png', 'views/images/pizzeria.jpg'])
+   gulp.src(['views/images/pizzeria_as_icon.jpg', 'views/images/pizza.png', 'views/images/pizza77X100.png', 'views/images/pizzeria.jpg'])
       .pipe(imagemin())
       .pipe(gulp.dest('build/views/images'))
 });

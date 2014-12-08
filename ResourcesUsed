@@ -7,3 +7,8 @@ https://www.youtube.com/watch?v=wNlEK8qrb0M&list=PLLnpHn493BHE2RsdyUNpbiVn-cfuV7
 
 C28: Specifying the size of text containers using em units:
 http://www.w3.org/TR/WCAG20-TECHS/C28.html
+
+I noticed my painting times were really long so got some tips from this:
+http://updates.html5rocks.com/2013/02/Profiling-Long-Paint-Times-with-DevTools-Continuous-Painting-Mode
+
+http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/

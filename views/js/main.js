@@ -220,7 +220,6 @@ var professions = ["doctor", "lawyer", "ninja", "writer", "samurai", "surgeon", 
       "computer", "future", "timeMachine", "wormHole", "timeTraveler", "scientist", "invention", "martian", "pluto", "jupiter", "saturn", "mars",
       "quasar", "blackHole", "warpDrive", "laser", "orbit", "gears", "molecule", "electron", "neutrino", "proton", "experiment", "photon", "apparatus",
       "universe", "gravity", "darkMatter", "constellation", "circuit", "asteroid"];
-
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
 // Capitalizes first letter of each word
 String.prototype.capitalize = function() {
@@ -415,7 +414,8 @@ var pizzaElementGenerator = function(i) {
   ul.innerHTML = makeRandomPizza();
   pizzaDescriptionContainer.appendChild(ul);
   pizzaContainer.appendChild(pizzaDescriptionContainer);
-
+    //testing
+    pizzaImage.style.display = "none";
   return pizzaContainer;
 }
 
@@ -523,10 +523,22 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+//console.log('windowwidth: ' + window.width);
+// Moved query outside of loop
   var items = document.querySelectorAll('.mover');
+  // Moved variable declaration outside of loop
+  var phase;
+  // based on trig ident: sin(x+y)=sinxcosy+sinycosx moved some calc outside of loop
+  var sinScroll = Math.sin(document.body.scrollTop / 1250);
+  var cosScroll = Math.cos(document.body.scrollTop / 1250);
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    //phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+        phase = sinScroll*Math.cos(i % 5) + Math.sin(i % 5)*cosScroll;
+
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+//    items[i].
+ //   console.log(items[i].style.left);
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -549,12 +561,16 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
+    elem.src = "images/pizza77X100.png";
     elem.style.height = "100px";
-    elem.style.width = "73.333px";
+    // changed elem.style.width from 73.33 to 77px to match the aspect ratio of the image
+    elem.style.width = "77px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
+    //testing
+    elem.style.display = "none";
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
+
   updatePositions();
 });
