@@ -4,6 +4,7 @@ var gulp = require('gulp'),
   minifyCSS = require('gulp-minify-css'),
   imagemin = require('gulp-imagemin');
   uncss = require('gulp-uncss');
+  webp = require('gulp-webp');
 
 gulp.task('uglifypizza', function () {
    gulp.src('views/js/*.js')
@@ -46,6 +47,21 @@ gulp.task('imageminprimary', function () {
 gulp.task('imageminpizza', function () {
    gulp.src(['views/images/pizzeria_as_icon.jpg', 'views/images/pizza.png', 'views/images/pizza77X100.png', 'views/images/pizzeria.jpg'])
       .pipe(imagemin())
+      .pipe(gulp.dest('build/views/images'))
+});
+
+// I already used Photoshop to reduce the images but will push them through imagemin anyway
+gulp.task('webpprimary', function () {
+   return gulp.src(['img/2048.png', 'img/mobilewebdev.jpg', 'img/cam_be_like.jpg', 'img/profilepic.jpg'])
+      .pipe(webp())
+      .pipe(gulp.dest('build/img'))
+});
+
+// Push the pizza page images through imagemin.  I already used Photoshop to reduce these images
+//  and to create the pizzeria_as_icon image
+gulp.task('webppizza', function () {
+   return gulp.src(['views/images/pizzeria_as_icon.jpg', 'views/images/pizza.png', 'views/images/pizza77X100.png', 'views/images/pizzeria.jpg'])
+      .pipe(webp())
       .pipe(gulp.dest('build/views/images'))
 });
 
