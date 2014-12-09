@@ -572,7 +572,7 @@ console.log('current item:' + items[i]);
     for (var i = 0; i < pizzaMoverItems.length; i++) {
     //phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
         phase = sinScroll*Math.cos(i % 5) + Math.sin(i % 5)*cosScroll;
-                newPizzaX = Math.round(100 * phase) - pizzaMoverItems[i].basicLeft;
+                newPizzaX = Math.round(100 * phase) + pizzaMoverItems[i].basicLeft - 768;
 
         //newPizzaX = pizzaMoverItems[i].basicLeft + Math.round(100 * phase);
         //pizzaMoverItems[i].style.transform = 'translate(' + newPizzaX + 'px)';
@@ -594,6 +594,14 @@ console.log('current item:' + items[i]);
         console.log('translateX(' + newPizzaX + 'px)');
         console.log('translate3d(' + newPizzaX + 'px, 0px, 0)'); */
       }
+       // User Timing API to the rescue again. Seriously, it's worth learning.
+  // Super easy to create custom metrics.
+  window.performance.mark("mark_end_frame");
+  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+  if (frame % 10 === 0) {
+    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+    logAverageFrame(timesToUpdatePosition);
+  }
 
   }
 
