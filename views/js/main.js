@@ -142,84 +142,81 @@ pizzaIngredients.crusts = [
   "Stuffed Crust"
 ];
 
-// Moved all the naming arrays outside of switch statement so they would be defined once and then reused
-      var dark = ["dark","morbid", "scary", "spooky", "gothic", "deviant", "creepy", "sadistic", "black", "dangerous", "dejected", "haunted", 
-      "morose", "tragic", "shattered", "broken", "sad", "melancholy", "somber", "dark", "gloomy", "homicidal", "murderous", "shady", "misty", 
-      "dusky", "ghostly", "shadowy", "demented", "cursed", "insane", "possessed", "grotesque", "obsessed"];
-            var colors = ["blue", "green", "purple", "grey", "scarlet", "NeonGreen", "NeonBlue", "NeonPink", "HotPink", "pink", "black", "red", 
-      "maroon", "silver", "golden", "yellow", "orange", "mustard", "plum", "violet", "cerulean", "brown", "lavender", "violet", "magenta",
-      "chestnut", "rosy", "copper", "crimson", "teal", "indigo", "navy", "azure", "periwinkle", "brassy", "verdigris", "veridian", "tan", 
-      "raspberry", "beige", "sandy", "ElectricBlue", "white", "champagne", "coral", "cyan"];
-           var whimsy = ["whimsical", "silly", "drunken", "goofy", "funny", "weird", "strange", "odd", "playful", "clever", "boastful", "breakdancing",
-      "hilarious", "conceited", "happy", "comical", "curious", "peculiar", "quaint", "quirky", "fancy", "wayward", "fickle", "yawning", "sleepy",
-      "cockeyed", "dizzy", "dancing", "absurd", "laughing", "hairy", "smiling", "perplexed", "baffled", "cockamamie", "vulgar", "hoodwinked", 
-      "brainwashed"];
-            var shiny = ["sapphire", "opal", "silver", "gold", "platinum", "ruby", "emerald", "topaz", "diamond", "amethyst", "turquoise", 
-      "starlit", "moonlit", "bronze", "metal", "jade", "amber", "garnet", "obsidian", "onyx", "pearl", "copper", "sunlit", "brass", "brassy",
-      "metallic"];
-            var noisy = ["untuned", "loud", "soft", "shrieking", "melodious", "musical", "operatic", "symphonic", "dancing", "lyrical", "harmonic", 
-      "orchestral", "noisy", "dissonant", "rhythmic", "hissing", "singing", "crooning", "shouting", "screaming", "wailing", "crying", "howling",
-      "yelling", "hollering", "caterwauling", "bawling", "bellowing", "roaring", "squealing", "beeping", "knocking", "tapping", "rapping", 
-      "humming", "scatting", "whispered", "whispering", "rasping", "buzzing", "whirring", "whistling", "whistled"];
-        var apocalyptic = ["nuclear", "apocalyptic", "desolate", "atomic", "zombie", "collapsed", "grim", "fallen", "collapsed", "cannibalistic", 
-      "radioactive", "toxic", "poisonous", "venomous", "disastrous", "grimy", "dirty", "undead", "bloodshot", "rusty", "glowing", "decaying",
-      "rotten", "deadly", "plagued", "decimated", "rotting", "putrid", "decayed", "deserted", "acidic"];
-       var insulting = ["stupid", "idiotic", "fat", "ugly", "hideous", "grotesque", "dull", "dumb", "lazy", "sluggish", "brainless", "slow", 
-      "gullible", "obtuse", "dense", "dim", "dazed", "ridiculous", "witless", "daft", "crazy", "vapid", "inane", "mundane", "hollow", "vacuous",
-      "boring", "insipid", "tedious", "monotonous", "weird", "bizarre", "backward", "moronic", "ignorant", "scatterbrained", "forgetful", "careless", 
-      "lethargic", "insolent", "indolent", "loitering", "gross", "disgusting", "bland", "horrid", "unseemly", "revolting", "homely", "deformed",
-      "disfigured", "offensive", "cowardly", "weak", "villainous", "fearful", "monstrous", "unattractive", "unpleasant", "nasty", "beastly", "snide", 
-      "horrible", "syncophantic", "unhelpful", "bootlicking"];
-
-      var praise = ["beautiful", "intelligent", "smart", "genius", "ingenious", "gorgeous", "pretty", "witty", "angelic", "handsome", "graceful",
-      "talented", "exquisite", "enchanting", "fascinating", "interesting", "divine", "alluring", "ravishing", "wonderful", "magnificient", "marvelous",
-      "dazzling", "cute", "charming", "attractive", "nifty", "delightful", "superior", "amiable", "gentle", "heroic", "courageous", "valiant", "brave", 
-      "noble", "daring", "fearless", "gallant", "adventurous", "cool", "enthusiastic", "fierce", "awesome", "radical", "tubular", "fearsome", 
-      "majestic", "grand", "stunning"];
-            var scientific = ["scientific", "technical", "digital", "programming", "calculating", "formulating", "cyberpunk", "mechanical", "technological", 
-      "innovative", "brainy", "chemical", "quantum", "astro", "space", "theoretical", "atomic", "electronic", "gaseous", "investigative", "solar", 
-      "extinct", "galactic"];
-
-            var animals = ["flamingo", "hedgehog", "owl", "elephant", "pussycat", "alligator", "dachsund", "poodle", "beagle", "crocodile", "kangaroo", 
-      "wallaby", "woodpecker", "eagle", "falcon", "canary", "parrot", "parakeet", "hamster", "gerbil", "squirrel", "rat", "dove", "toucan", 
-      "raccoon", "vulture", "peacock", "goldfish", "rook", "koala", "skunk", "goat", "rooster", "fox", "porcupine", "llama", "grasshopper", 
-      "gorilla", "monkey", "seahorse", "wombat", "wolf", "giraffe", "badger", "lion", "mouse", "beetle", "cricket", "nightingale", 
-      "hawk", "trout", "squid", "octopus", "sloth", "snail", "locust", "baboon", "lemur", "meerkat", "oyster", "frog", "toad", "jellyfish", 
-      "butterfly", "caterpillar", "tiger", "hyena", "zebra", "snail", "pig", "weasel", "donkey", "penguin", "crane", "buzzard", "vulture", 
-      "rhino", "hippopotamus", "dolphin", "sparrow", "beaver", "moose", "minnow", "otter", "bat", "mongoose", "swan", "firefly", "platypus"];
-
+// Performance Improvement: Moved all the naming arrays outside of switch statement so they would be defined once and then reused
+var dark = ["dark","morbid", "scary", "spooky", "gothic", "deviant", "creepy", "sadistic", "black", "dangerous", "dejected", "haunted", 
+  "morose", "tragic", "shattered", "broken", "sad", "melancholy", "somber", "dark", "gloomy", "homicidal", "murderous", "shady", "misty", 
+  "dusky", "ghostly", "shadowy", "demented", "cursed", "insane", "possessed", "grotesque", "obsessed"];
+var colors = ["blue", "green", "purple", "grey", "scarlet", "NeonGreen", "NeonBlue", "NeonPink", "HotPink", "pink", "black", "red", 
+  "maroon", "silver", "golden", "yellow", "orange", "mustard", "plum", "violet", "cerulean", "brown", "lavender", "violet", "magenta",
+  "chestnut", "rosy", "copper", "crimson", "teal", "indigo", "navy", "azure", "periwinkle", "brassy", "verdigris", "veridian", "tan", 
+  "raspberry", "beige", "sandy", "ElectricBlue", "white", "champagne", "coral", "cyan"];
+var whimsy = ["whimsical", "silly", "drunken", "goofy", "funny", "weird", "strange", "odd", "playful", "clever", "boastful", "breakdancing",
+  "hilarious", "conceited", "happy", "comical", "curious", "peculiar", "quaint", "quirky", "fancy", "wayward", "fickle", "yawning", "sleepy",
+  "cockeyed", "dizzy", "dancing", "absurd", "laughing", "hairy", "smiling", "perplexed", "baffled", "cockamamie", "vulgar", "hoodwinked", 
+  "brainwashed"];
+var shiny = ["sapphire", "opal", "silver", "gold", "platinum", "ruby", "emerald", "topaz", "diamond", "amethyst", "turquoise", 
+  "starlit", "moonlit", "bronze", "metal", "jade", "amber", "garnet", "obsidian", "onyx", "pearl", "copper", "sunlit", "brass", "brassy",
+  "metallic"];
+var noisy = ["untuned", "loud", "soft", "shrieking", "melodious", "musical", "operatic", "symphonic", "dancing", "lyrical", "harmonic", 
+  "orchestral", "noisy", "dissonant", "rhythmic", "hissing", "singing", "crooning", "shouting", "screaming", "wailing", "crying", "howling",
+  "yelling", "hollering", "caterwauling", "bawling", "bellowing", "roaring", "squealing", "beeping", "knocking", "tapping", "rapping", 
+  "humming", "scatting", "whispered", "whispering", "rasping", "buzzing", "whirring", "whistling", "whistled"];
+var apocalyptic = ["nuclear", "apocalyptic", "desolate", "atomic", "zombie", "collapsed", "grim", "fallen", "collapsed", "cannibalistic", 
+  "radioactive", "toxic", "poisonous", "venomous", "disastrous", "grimy", "dirty", "undead", "bloodshot", "rusty", "glowing", "decaying",
+  "rotten", "deadly", "plagued", "decimated", "rotting", "putrid", "decayed", "deserted", "acidic"];
+var insulting = ["stupid", "idiotic", "fat", "ugly", "hideous", "grotesque", "dull", "dumb", "lazy", "sluggish", "brainless", "slow", 
+  "gullible", "obtuse", "dense", "dim", "dazed", "ridiculous", "witless", "daft", "crazy", "vapid", "inane", "mundane", "hollow", "vacuous",
+  "boring", "insipid", "tedious", "monotonous", "weird", "bizarre", "backward", "moronic", "ignorant", "scatterbrained", "forgetful", "careless", 
+  "lethargic", "insolent", "indolent", "loitering", "gross", "disgusting", "bland", "horrid", "unseemly", "revolting", "homely", "deformed",
+  "disfigured", "offensive", "cowardly", "weak", "villainous", "fearful", "monstrous", "unattractive", "unpleasant", "nasty", "beastly", "snide", 
+  "horrible", "syncophantic", "unhelpful", "bootlicking"];
+var praise = ["beautiful", "intelligent", "smart", "genius", "ingenious", "gorgeous", "pretty", "witty", "angelic", "handsome", "graceful",
+  "talented", "exquisite", "enchanting", "fascinating", "interesting", "divine", "alluring", "ravishing", "wonderful", "magnificient", "marvelous",
+  "dazzling", "cute", "charming", "attractive", "nifty", "delightful", "superior", "amiable", "gentle", "heroic", "courageous", "valiant", "brave", 
+  "noble", "daring", "fearless", "gallant", "adventurous", "cool", "enthusiastic", "fierce", "awesome", "radical", "tubular", "fearsome", 
+  "majestic", "grand", "stunning"];
+var scientific = ["scientific", "technical", "digital", "programming", "calculating", "formulating", "cyberpunk", "mechanical", "technological", 
+  "innovative", "brainy", "chemical", "quantum", "astro", "space", "theoretical", "atomic", "electronic", "gaseous", "investigative", "solar", 
+  "extinct", "galactic"];
+var animals = ["flamingo", "hedgehog", "owl", "elephant", "pussycat", "alligator", "dachsund", "poodle", "beagle", "crocodile", "kangaroo", 
+  "wallaby", "woodpecker", "eagle", "falcon", "canary", "parrot", "parakeet", "hamster", "gerbil", "squirrel", "rat", "dove", "toucan", 
+  "raccoon", "vulture", "peacock", "goldfish", "rook", "koala", "skunk", "goat", "rooster", "fox", "porcupine", "llama", "grasshopper", 
+  "gorilla", "monkey", "seahorse", "wombat", "wolf", "giraffe", "badger", "lion", "mouse", "beetle", "cricket", "nightingale", 
+  "hawk", "trout", "squid", "octopus", "sloth", "snail", "locust", "baboon", "lemur", "meerkat", "oyster", "frog", "toad", "jellyfish", 
+  "butterfly", "caterpillar", "tiger", "hyena", "zebra", "snail", "pig", "weasel", "donkey", "penguin", "crane", "buzzard", "vulture", 
+  "rhino", "hippopotamus", "dolphin", "sparrow", "beaver", "moose", "minnow", "otter", "bat", "mongoose", "swan", "firefly", "platypus"];
 var professions = ["doctor", "lawyer", "ninja", "writer", "samurai", "surgeon", "clerk", "artist", "actor", "engineer", "mechanic",
-      "comedian", "fireman", "nurse", "RockStar", "musician", "carpenter", "plumber", "cashier", "electrician", "waiter", "president", "governor", 
-      "senator", "scientist", "programmer", "singer", "dancer", "director", "mayor", "merchant", "detective", "investigator", "navigator", "pilot",
-      "priest", "cowboy", "stagehand", "soldier", "ambassador", "pirate", "miner", "police"];
-      var fantasy = ["centaur", "wizard", "gnome", "orc", "troll", "sword", "fairy", "pegasus", "halfling", "elf", "changeling", "ghost", 
-      "knight", "squire", "magician", "witch", "warlock", "unicorn", "dragon", "wyvern", "princess", "prince", "king", "queen", "jester", 
-      "tower", "castle", "kraken", "seamonster", "mermaid", "psychic", "seer", "oracle"];
-      var music = ["violin", "flute", "bagpipe", "guitar", "symphony", "orchestra", "piano", "trombone", "tuba", "opera", "drums", 
-      "harpsichord", "harp", "harmonica", "accordion", "tenor", "soprano", "baritone", "cello", "viola", "piccolo", "ukelele", "woodwind", "saxophone",
-      "bugle", "trumpet", "sousaphone", "cornet", "stradivarius", "marimbas", "bells", "timpani", "bongos", "clarinet", "recorder", "oboe", "conductor",
-      "singer"];
-        var horror = ["murderer", "chainsaw", "knife", "sword", "murder", "devil", "killer", "psycho", "ghost", "monster", "godzilla", "werewolf", 
-      "vampire", "demon", "graveyard", "zombie", "mummy", "curse", "death", "grave", "tomb", "beast", "nightmare", "frankenstein", "specter", 
-      "poltergeist", "wraith", "corpse", "scream", "massacre", "cannibal", "skull", "bones", "undertaker", "zombie", "creature", "mask", "psychopath",
-      "fiend", "satanist", "moon", "fullMoon"];
-     var gross = ["slime", "bug", "roach", "fluid", "pus", "booger", "spit", "boil", "blister", "orifice", "secretion", "mucus", "phlegm", 
-      "centipede", "beetle", "fart", "snot", "crevice", "flatulence", "juice", "mold", "mildew", "germs", "discharge", "toilet", "udder", "odor", "substance", 
-      "fluid", "moisture", "garbage", "trash", "bug"];
-            var everyday = ["mirror", "knife", "fork", "spork", "spoon", "tupperware", "minivan", "suburb", "lamp", "desk", "stereo", "television", "TV",
-      "book", "car", "truck", "soda", "door", "video", "game", "computer", "calender", "tree", "plant", "flower", "chimney", "attic", "kitchen",
-      "garden", "school", "wallet", "bottle"];
+  "comedian", "fireman", "nurse", "RockStar", "musician", "carpenter", "plumber", "cashier", "electrician", "waiter", "president", "governor", 
+  "senator", "scientist", "programmer", "singer", "dancer", "director", "mayor", "merchant", "detective", "investigator", "navigator", "pilot",
+  "priest", "cowboy", "stagehand", "soldier", "ambassador", "pirate", "miner", "police"];
+var fantasy = ["centaur", "wizard", "gnome", "orc", "troll", "sword", "fairy", "pegasus", "halfling", "elf", "changeling", "ghost", 
+  "knight", "squire", "magician", "witch", "warlock", "unicorn", "dragon", "wyvern", "princess", "prince", "king", "queen", "jester", 
+  "tower", "castle", "kraken", "seamonster", "mermaid", "psychic", "seer", "oracle"];
+var music = ["violin", "flute", "bagpipe", "guitar", "symphony", "orchestra", "piano", "trombone", "tuba", "opera", "drums", 
+  "harpsichord", "harp", "harmonica", "accordion", "tenor", "soprano", "baritone", "cello", "viola", "piccolo", "ukelele", "woodwind", "saxophone",
+  "bugle", "trumpet", "sousaphone", "cornet", "stradivarius", "marimbas", "bells", "timpani", "bongos", "clarinet", "recorder", "oboe", "conductor",
+  "singer"];
+var horror = ["murderer", "chainsaw", "knife", "sword", "murder", "devil", "killer", "psycho", "ghost", "monster", "godzilla", "werewolf", 
+  "vampire", "demon", "graveyard", "zombie", "mummy", "curse", "death", "grave", "tomb", "beast", "nightmare", "frankenstein", "specter", 
+  "poltergeist", "wraith", "corpse", "scream", "massacre", "cannibal", "skull", "bones", "undertaker", "zombie", "creature", "mask", "psychopath",
+  "fiend", "satanist", "moon", "fullMoon"];
+var gross = ["slime", "bug", "roach", "fluid", "pus", "booger", "spit", "boil", "blister", "orifice", "secretion", "mucus", "phlegm", 
+  "centipede", "beetle", "fart", "snot", "crevice", "flatulence", "juice", "mold", "mildew", "germs", "discharge", "toilet", "udder", "odor", "substance", 
+  "fluid", "moisture", "garbage", "trash", "bug"];
+var everyday = ["mirror", "knife", "fork", "spork", "spoon", "tupperware", "minivan", "suburb", "lamp", "desk", "stereo", "television", "TV",
+  "book", "car", "truck", "soda", "door", "video", "game", "computer", "calender", "tree", "plant", "flower", "chimney", "attic", "kitchen",
+  "garden", "school", "wallet", "bottle"];
+var jewelry = ["earrings", "ring", "necklace", "pendant", "choker", "brooch", "bracelet", "cameo", "charm", "bauble", "trinket", "jewelry", 
+  "anklet", "bangle", "locket", "finery", "crown", "tiara", "blingBling", "chain", "rosary", "jewel", "gemstone", "beads", "armband", "pin",
+  "costume", "ornament", "treasure"];
+var places = ["swamp", "graveyard", "cemetery", "park", "building", "house", "river", "ocean", "sea", "field", "forest", "woods", "neighborhood",
+  "city", "town", "suburb", "country", "meadow", "cliffs", "lake", "stream", "creek", "school", "college", "university", "library", "bakery",
+  "shop", "store", "theater", "garden", "canyon", "highway", "restaurant", "cafe", "diner", "street", "road", "freeway", "alley"];
+var scifi = ["robot", "alien", "raygun", "spaceship", "UFO", "rocket", "phaser", "astronaut", "spaceman", "planet", "star", "galaxy", 
+  "computer", "future", "timeMachine", "wormHole", "timeTraveler", "scientist", "invention", "martian", "pluto", "jupiter", "saturn", "mars",
+  "quasar", "blackHole", "warpDrive", "laser", "orbit", "gears", "molecule", "electron", "neutrino", "proton", "experiment", "photon", "apparatus",
+  "universe", "gravity", "darkMatter", "constellation", "circuit", "asteroid"];
 
-     var jewelry = ["earrings", "ring", "necklace", "pendant", "choker", "brooch", "bracelet", "cameo", "charm", "bauble", "trinket", "jewelry", 
-      "anklet", "bangle", "locket", "finery", "crown", "tiara", "blingBling", "chain", "rosary", "jewel", "gemstone", "beads", "armband", "pin",
-      "costume", "ornament", "treasure"];
-      var places = ["swamp", "graveyard", "cemetery", "park", "building", "house", "river", "ocean", "sea", "field", "forest", "woods", "neighborhood",
-      "city", "town", "suburb", "country", "meadow", "cliffs", "lake", "stream", "creek", "school", "college", "university", "library", "bakery",
-      "shop", "store", "theater", "garden", "canyon", "highway", "restaurant", "cafe", "diner", "street", "road", "freeway", "alley"];
-  var scifi = ["robot", "alien", "raygun", "spaceship", "UFO", "rocket", "phaser", "astronaut", "spaceman", "planet", "star", "galaxy", 
-      "computer", "future", "timeMachine", "wormHole", "timeTraveler", "scientist", "invention", "martian", "pluto", "jupiter", "saturn", "mars",
-      "quasar", "blackHole", "warpDrive", "laser", "orbit", "gears", "molecule", "electron", "neutrino", "proton", "experiment", "photon", "apparatus",
-      "universe", "gravity", "darkMatter", "constellation", "circuit", "asteroid"];
 // Name generator pulled from http://saturdaykid.com/usernames/generator.html
 // Capitalizes first letter of each word
 String.prototype.capitalize = function() {
@@ -229,35 +226,25 @@ String.prototype.capitalize = function() {
 // Pulls adjective out of array using random number sent from generator
 function getAdj(x){
   switch(x) {
-    case "dark": 
-
+    case "dark":
       return dark;
-    case "color": 
-
+    case "color":
       return colors;
-    case "whimsical": 
- 
+    case "whimsical":
       return whimsy;
     case "shiny":
-
       return shiny;
     case "noisy":
-
       return noisy;
     case "apocalyptic":
- 
       return apocalyptic;
     case "insulting":
-
       return insulting;
     case "praise":
-
       return praise;
     case "scientific":
-
       return scientific;
-    default:
- 
+    default: 
       return scientific;
   };
 };
@@ -266,45 +253,33 @@ function getAdj(x){
 function getNoun(y) {
   switch(y) {
     case "animals": 
-
       return animals;
-    case "profession": 
-      
+    case "profession":       
       return professions; 
     case "fantasy": 
-
       return fantasy;
-    case "music":
- 
+    case "music": 
       return music;
-    case "horror":
- 
+    case "horror": 
       return horror;
-    case "gross":
- 
+    case "gross": 
       return gross;
     case "everyday":
-
       return everyday;
-    case "jewelry":
- 
+    case "jewelry": 
       return jewelry;
-    case "places":
- 
+    case "places": 
       return places;
-    case "scifi":
-    
+    case "scifi":    
       return scifi;
-    default:
-  
+    default:  
       return scifi;
   }; 
 };
 
 var adjectives = ["dark", "color", "whimsical", "shiny", "noise", "apocalyptic", "insulting", "praise", "scientific"];  // types of adjectives for pizza titles
 var nouns = ["animals", "everyday", "fantasy", "gross", "horror", "jewelry", "places", "scifi"];// types of nouns for pizza titles
-// added pizzaMoverItems global variable so it does not need to be called in updatePositions
-var pizzaMoverItems = [];
+
 // Generates random numbers for getAdj and getNoun functions and returns a new pizza name
 function generator(adj, noun) {
   var adjectives = getAdj(adj);
@@ -415,6 +390,7 @@ var pizzaElementGenerator = function(i) {
   ul.innerHTML = makeRandomPizza();
   pizzaDescriptionContainer.appendChild(ul);
   pizzaContainer.appendChild(pizzaDescriptionContainer);
+  
   return pizzaContainer;
 }
 
@@ -470,9 +446,13 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    // Performance Improvement: moved variable declaration of dx and newwidth outside of loop
+    var dx;
+    var newwidth;
+
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
+      newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
       document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
     }
   }
@@ -489,7 +469,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-  var pizzasDiv = document.getElementById("randomPizzas"); // moved outside of for loop so it does not get called for every iteration
+// Performance Improvement: Moved pizzasDiv outside of for loop so it does not get called for every iteration
+var pizzasDiv = document.getElementById("randomPizzas"); 
 for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
@@ -514,86 +495,24 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
   console.log("Average time to generate last 10 frames: " + sum / 10 + "ms");
 }
 
+// Performance Improvement: Added pizzaMoverItems as a global variable so it does not need to be called repeatedly
+var pizzaMoverItems = [];
+
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-function updatePositionsOld() {
-  frame++;
-  window.performance.mark("mark_start_frame");
-
-//console.log('windowwidth: ' + window.width);
-// Moved query outside of loop
-  var items = document.querySelectorAll('.mover');
-  // Moved variable declaration outside of loop
-  var phase;
-  // based on trig ident: sin(x+y)=sinxcosy+sinycosx moved some calc outside of loop
-  var sinScroll = Math.sin(document.body.scrollTop / 1250);
-  var cosScroll = Math.cos(document.body.scrollTop / 1250);
-
-  for (var i = 0; i < items.length; i++) {
-    //phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-        phase = Math.round(sinScroll*Math.cos(i % 5) + Math.sin(i % 5)*cosScroll);
-
-    //items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-     //   items[i].style.transform = 'translateX' + items[i].basicLeft + 100 * phase + 'px';
-
-    console.log('item transform: ' + items[i].style.transform);
-/*
-    items[i].style.visibility = "hidden";
-console.log('current item:' + items[i]);
-    console.log('basicLeft: ' + items[i].basicLeft);
-
-    console.log('style.left: ' + items[i].style.left);
-    console.log('window.innerWidth: ' + window.innerWidth);
-        console.log('style.position: ' + items[i].style.position); */
-      }
-  // User Timing API to the rescue again. Seriously, it's worth learning.
-  // Super easy to create custom metrics.
-  window.performance.mark("mark_end_frame");
-  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-  if (frame % 10 === 0) {
-    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-    logAverageFrame(timesToUpdatePosition);
-  }
-}
-  
-
   function updatePositions() {
     frame++;
-  window.performance.mark("mark_start_frame");
-    // Moved variable declaration outside of loop
-  var phase;
-  var newPizzaX;
-  // based on trig ident: sin(x+y)=sinxcosy+sinycosx moved some calc outside of loop
-  //console.log('scrollTop: ' + document.body.scrollTop);
-  var sinScroll = Math.sin(document.body.scrollTop / 1250);
-  var cosScroll = Math.cos(document.body.scrollTop / 1250);
+    window.performance.mark("mark_start_frame");
+    // Performance Improvement: Moved declaration of phase variable outside of loop
+    var phase;
     for (var i = 0; i < pizzaMoverItems.length; i++) {
-    //phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-        phase = sinScroll*Math.cos(i % 5) + Math.sin(i % 5)*cosScroll;
-                newPizzaX = Math.round(100 * phase) + pizzaMoverItems[i].basicLeft - 768;
+      phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+      //Performance Improvement: Used style.transform instead of style.left
+      pizzaMoverItems[i].style.transform = 'translate3d(' + pizzaMoverItems[i].basicLeft + 100 * phase + 'px, 0px, 0)';
+    }
 
-        //newPizzaX = pizzaMoverItems[i].basicLeft + Math.round(100 * phase);
-        //pizzaMoverItems[i].style.transform = 'translate(' + newPizzaX + 'px)';
-        pizzaMoverItems[i].style.transform = 'translate3d(' + newPizzaX + 'px, 0px, 0)';
-                //console.log('translate3d(' + newPizzaX + 'px, 0px, 0)'); 
-//pizzaMoverItems[i].style.left = newPizzaX + 'px';
-//console.log('style.left: ' + pizzaMoverItems[i].style.left);
-        
-
-       // pizzaMoverItems[i].style.left = newPizzaX + 'px';
-      // pizzaMoverItems[i].style.left = pizzaMoverItems[i].basicLeft + 100 * phase + 'px';
-
-   // pizzaMoverItems[i].style.transform = 'translate3d(' + pizzaMoverItems[i].basicLeft + 100 * phase + 'px, 0px, 0)';
-
-       // pizzaMoverItems[i].style.transform = 'translateX(' + newPizzaX + 'px)';
-        /*
-                console.log(pizzaMoverItems[i].basicLeft + 100 * phase + 'px');
-
-        console.log('translateX(' + newPizzaX + 'px)');
-        console.log('translate3d(' + newPizzaX + 'px, 0px, 0)'); */
-      }
        // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -603,8 +522,7 @@ console.log('current item:' + items[i]);
     logAverageFrame(timesToUpdatePosition);
   }
 
-  }
-
+}
 
 
 // runs updatePositions on scroll
@@ -614,21 +532,19 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  // Performance Improvement: moved the querySelector outside of the loop
   var movingPizzasSelection = document.querySelector("#movingPizzas1");
-  // There are only a fraction of the small pizzas ever on screen, so reduced number of them to 24; even some of those are offscreen
-    for (var i = 0; i < 24; i++) {
 
- // for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza77X100.webp";
     elem.style.height = "100px";
-    // changed elem.style.width from 73.33 to 77px to match the aspect ratio of the image
-    elem.style.width = "77px";
+    elem.style.width = "73.33px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     movingPizzasSelection.appendChild(elem);
   }
-pizzaMoverItems = document.querySelectorAll('.mover');
+  pizzaMoverItems = document.querySelectorAll('.mover');
   updatePositions();
 });
