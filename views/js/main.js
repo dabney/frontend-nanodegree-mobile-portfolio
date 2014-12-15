@@ -512,7 +512,21 @@ var pizzaMoverItems = [];
       //Performance Improvement: Used style.transform instead of style.left
       pizzaMoverItems[i].style.transform = 'translate3d(' + pizzaMoverItems[i].basicLeft + 100 * phase + 'px, 0px, 0)';
     }
+/* Alternate code
+  var newPizzaX;
+  // based on trig ident: sin(x+y)=sinxcosy+sinycosx moved some calc outside of loop
+  //console.log('scrollTop: ' + document.body.scrollTop);
+  var sinScroll = Math.sin(document.body.scrollTop / 1250);
+  var cosScroll = Math.cos(document.body.scrollTop / 1250);
+    for (var i = 0; i < pizzaMoverItems.length; i++) {
+    //phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+        phase = sinScroll*Math.cos(i % 5) + Math.sin(i % 5)*cosScroll;
+                newPizzaX = Math.round(100 * phase) + pizzaMoverItems[i].basicLeft - 768;
 
+        //newPizzaX = pizzaMoverItems[i].basicLeft + Math.round(100 * phase);
+        //pizzaMoverItems[i].style.transform = 'translate(' + newPizzaX + 'px)';
+        pizzaMoverItems[i].style.transform = 'translate3d(' + newPizzaX + 'px, 0px, 0)';
+        */
        // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
