@@ -90,8 +90,7 @@ footer span { float: right; font-style: italic; }
     <footer>
       <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
     </footer>
-  </body>
-  <!-- moved analytics and performance scripts below body to prevent blocking -->
+      <!-- moved analytics and performance scripts to end to prevent blocking -->
     <script>
       (function(w,g){w['GoogleAnalyticsObject']=g;
       w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
@@ -102,4 +101,5 @@ footer span { float: right; font-style: italic; }
     </script>
     <script src="http://www.google-analytics.com/analytics.js"></script>
     <script async src="js/perfmatters.js"></script>
+  </body>
 </html>
