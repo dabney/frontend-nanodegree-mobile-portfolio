@@ -394,6 +394,8 @@ var pizzaElementGenerator = function(i) {
   return pizzaContainer;
 }
 
+// Added global variable so querySelector on #pizzaSize is not called repeatedly
+var pizzaSizeElement = document.querySelector("#pizzaSize");
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) { 
   window.performance.mark("mark_start_resize");   // User Timing API function
@@ -402,13 +404,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        pizzaSizeElement.innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        pizzaSizeElement.innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        pizzaSizeElement.innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -422,7 +424,7 @@ var resizePizzas = function(size) {
     var oldwidth = elem.offsetWidth;
     var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
     var oldsize = oldwidth / windowwidth;
-
+console.log('windowwidth: ' + windowwidth);
     // TODO: change to 3 sizes? no more xl?
     // Changes the slider value to a percent width
     function sizeSwitcher (size) {
@@ -446,14 +448,15 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    // Performance Improvement: moved variable declaration of dx and newwidth outside of loop
-    var dx;
-    var newwidth;
+    // Performance Improvement: only call the querySelectorAll once
+    var randomPizzaContainerElements = document.querySelectorAll(".randomPizzaContainer");
+    // Performance Improvement: moved dx and newwidth outside of loop used zeroth element since all
+    // will return same dx and newwidth
+    var dx = determineDx(randomPizzaContainerElements[0], size);
+    var newwidth = (randomPizzaContainerElements[0].offsetWidth + dx) + 'px';
 
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    for (var i = 0; i < randomPizzaContainerElements.length; i++) {
+      randomPizzaContainerElements[i].style.width = newwidth;
     }
   }
 
@@ -507,10 +510,21 @@ var pizzaMoverItems = [];
     window.performance.mark("mark_start_frame");
     // Performance Improvement: Moved declaration of phase variable outside of loop
     var phase;
+    // Performance Improvement: Moved scrollTop calculation outside of loop
+    var scrollTop1250 = document.body.scrollTop / 1250;
+    var newPizzaX;
+
     for (var i = 0; i < pizzaMoverItems.length; i++) {
-      phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+      phase = Math.sin(scrollTop1250 + (i % 5));
+      newPizzaX = Math.round(pizzaMoverItems[i].basicLeft + 100 * phase);
       //Performance Improvement: Used style.transform instead of style.left
-      pizzaMoverItems[i].style.transform = 'translate3d(' + pizzaMoverItems[i].basicLeft + 100 * phase + 'px, 0px, 0)';
+     // pizzaMoverItems[i].style.left = newPizzaX + 'px';
+    //pizzaMoverItems[i].style.transform = 'translateX(' + newPizzaX + 'px)';
+     // pizzaMoverItems[i].style.transform = 'translate3d(0px, 0px, 0px)';
+
+      pizzaMoverItems[i].style.transform = 'translate3d(' + newPizzaX + 'px, 0px, 0px)';
+    //  pizzaMoverItems[i].style.transform = 'translate3d(' + newPizzaX + 'px, 0px, 0)';
+     // console.log('translate3d(' + newPizzaX + 'px, 0px, 0)');
     }
 /* Alternate code
   var newPizzaX;
@@ -548,6 +562,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   // Performance Improvement: moved the querySelector outside of the loop
   var movingPizzasSelection = document.querySelector("#movingPizzas1");
+  // Set the movingPizzas1 element position to fixed  and the zIndex to -1 
+  // so using style.transform instead of style.left will display correctly
+  movingPizzasSelection.style.position = 'fixed';
+  movingPizzasSelection.style.zIndex = -1;
 
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
