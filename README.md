@@ -1,19 +1,33 @@
 ## Website Performance Optimization portfolio project
 Update: Dabney has optimized this portfolio.  The optimized code can be found in the 'build' directory.  The optimized code is also hosted on Github Pages and can be run here: http://dabney.github.io/frontend-nanodegree-mobile-portfolio/build/
 Here are some things I did to optimize:
+
 1) Used Photoshop and gulp-webp to optimize images and size them appropriately
+
 2) Inlined style sheets to eliminate loading external stylesheet file
+
 3) Hotlinked font family and only used latin characters for faster loading
+
 4) Added media="print" to the loading of the print stylesheet to eliminate blocking for screen rendering
+
 5) Moved analytics loading to end to keep from blocking
+
 6) Minified the Javascript using gulp-uglify
+
 7) In main.js for pizza page optimized wherever I could including:
+
     -moved all the naming arrays outside of switch statement so they would be defined once and then reused
+    
     -moved variable declaration for i out of loops so it can be reused
+    
     -added global variable so querySelector on #pizzaSize is not called repeatedly
+    
     -added pizzaMoverItems as a global variable so it does not need to be called repeatedly
+    
     -used style.transform instead of style.left
+    
     -moved variable declarations/assignments outside of loops wherever possible
+    
     
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
